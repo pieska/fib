@@ -2,16 +2,19 @@ package main
 
 import (
 	"fib/fib"
+	"flag"
 	"fmt"
 	"os"
 )
 
 func main() {
-	const n uint = 5
 
-	var fib []uint = fib.Generate(n)
+	n := flag.Uint("n", 5, "Stellen der Fibonacci-Zahl")
+	flag.Parse()
 
-	fmt.Printf("fibs(%d) = %v\n", n, fib)
+	fib := fib.Generate(*n)
+
+	fmt.Printf("fibs(%d) = %v\n", *n, fib)
 
 	os.Exit(0)
 }
