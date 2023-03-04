@@ -11,7 +11,7 @@ func main() {
 
 	var n uint
 
-	flag.UintVar(&n, "n", 5, "Stellen der Fibonacci-Zahl")
+	flag.UintVar(&n, "n", 5, "Anzahl der Fibonacci-Zahlen")
 	flag.Parse()
 
 	fib := fib.Generate(n)
