@@ -10,13 +10,13 @@ import (
 func main() {
 
 	var n uint
-	var t bool
+	var i bool
 
 	flag.UintVar(&n, "n", 5, "Anzahl der Fibonacci-Zahlen")
-	flag.BoolVar(&t, "t", false, "Verwende Channel")
+	flag.BoolVar(&i, "i", false, "immediate output, verwendet Channel")
 	flag.Parse()
 
-	if !t {
+	if !i {
 		fibs := fib.GenerateSlice(n)
 
 		fmt.Printf("fibs(%d) = %v\n", n, fibs)
