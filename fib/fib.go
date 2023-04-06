@@ -12,9 +12,11 @@ func GenerateSlice(count uint) (fibs []uint) {
 	return
 }
 
-func GenerateChannel(count uint) (fibs chan (uint)) {
+// return a receive-only channel only
+func GenerateChannel(count uint) <-chan (uint) {
 
-	fibs = make(chan uint)
+	// create a two-way channel
+	fibs := make(chan uint)
 
 	go func(count uint) {
 		var prev, current uint = 0, 1
