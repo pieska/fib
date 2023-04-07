@@ -17,7 +17,7 @@ func TestGenerateSlice(t *testing.T) {
 func TestGenerateChannel(t *testing.T) {
 	var want []uint = []uint{1, 1, 2, 3, 5}
 	var got []uint = func() (x []uint) {
-		fibs := GenerateChannel(5)
+		var fibs <-chan uint = GenerateChannel(5)
 		for fib := range fibs {
 			x = append(x, fib)
 		}
