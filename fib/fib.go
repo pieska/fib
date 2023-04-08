@@ -16,7 +16,7 @@ func GenerateSlice(count uint) (fibs []uint) {
 func GenerateChannel(count uint) <-chan (uint) {
 
 	// create a two-way channel
-	fibs := make(chan uint)
+	var fibs chan uint = make(chan uint)
 
 	go func(count uint) {
 		var prev, current uint = 0, 1
