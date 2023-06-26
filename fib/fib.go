@@ -5,8 +5,8 @@ func GenerateSlice(count uint) []uint {
 	var prev, current uint = 0, 1
 	var i uint
 
-	// create an empty slice with cap = count
-	var fibs = make([]uint, 0, count);
+	// create an empty slice with cap = count to prevent enlarging array by copying
+	var fibs = make([]uint, 0, count)
 
 	for i = 0; i < count; i++ {
 		fibs = append(fibs, current)
