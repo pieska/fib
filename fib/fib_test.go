@@ -31,10 +31,9 @@ func TestGenerateChannel(t *testing.T) {
 
 func BenchmarkGenerateSlice(b *testing.B) {
 
-	const iterations uint = 1_000
 	var i uint = 0
 
-	for i < iterations {
+	for i < uint(b.N) {
 		GenerateSlice(i)
 		i++
 	}
@@ -42,10 +41,9 @@ func BenchmarkGenerateSlice(b *testing.B) {
 
 func BenchmarkGenerateChannel(b *testing.B) {
 
-	const iterations uint = 1_000
 	var i uint = 0
 
-	for i < iterations {
+	for i < uint(b.N) {
 		GenerateChannel(i)
 		i++
 	}
