@@ -16,10 +16,10 @@ func GenerateSlice(count uint) []uint {
 }
 
 // return a receive-only channel only
-func GenerateChannel(count uint) <-chan (uint) {
+func GenerateChannel(count uint, buffersize uint) <-chan (uint) {
 
-	// create a two-way channel
-	var fibs chan uint = make(chan uint)
+	// create a two-way buffered channel
+	var fibs chan uint = make(chan uint, buffersize)
 
 	go func(count uint) {
 		var prev, current uint = 0, 1
