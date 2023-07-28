@@ -3,6 +3,7 @@ package fib
 import (
 	"fmt"
 	"reflect"
+	"runtime"
 	"testing"
 )
 
@@ -32,22 +33,24 @@ func TestGenerateChannel(t *testing.T) {
 
 func BenchmarkGenerateSlice(b *testing.B) {
 
-	var i uint = 0
+	var i uint
+	var r []uint
 
-	for i < uint(b.N) {
-		GenerateSlice(i)
-		i++
+	for i = 0; i < uint(b.N); i++ {
+		r = GenerateSlice(i)
 	}
+	runtime.KeepAlive(r)
 }
 
 func BenchmarkGenerateChannel(b *testing.B) {
 
-	var i uint = 0
+	var i uint
+	var r <-chan uint
 
-	for i < uint(b.N) {
-		GenerateChannel(i, 0)
-		i++
+	for i = 0; i < uint(b.N); i++ {
+		r = GenerateChannel(i, 0)
 	}
+	runtime.KeepAlive(r)
 }
 
 func ExampleGenerateSlice() {
