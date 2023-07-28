@@ -36,10 +36,17 @@ func BenchmarkGenerateSlice(b *testing.B) {
 	var i uint
 	var r []uint
 
-	for i = 0; i < uint(b.N); i++ {
-		r = GenerateSlice(i)
+	sizes := []uint{10, 100, 1000, 10000, 100000}
+
+	for _, s := range sizes {
+
+		b.Run(fmt.Sprintf("GenerateSlice(%d)", s), func(b *testing.B) {
+			for i = 0; i < uint(b.N); i++ {
+				r = GenerateSlice(uint(s))
+			}
+			runtime.KeepAlive(r)
+		})
 	}
-	runtime.KeepAlive(r)
 }
 
 func BenchmarkGenerateChannel(b *testing.B) {
