@@ -1,6 +1,7 @@
 package fib
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -44,7 +45,27 @@ func BenchmarkGenerateChannel(b *testing.B) {
 	var i uint = 0
 
 	for i < uint(b.N) {
-		GenerateChannel(i,0)
+		GenerateChannel(i, 0)
 		i++
+	}
+}
+
+func ExampleGenerateSlice() {
+	r := GenerateSlice(5)
+	fmt.Println(r)
+	// Output:
+	// [1 1 2 3 5]
+}
+
+func ExampleGenerateChannel() {
+	rs := GenerateChannel(5, 0)
+	for r := range rs {
+		fmt.Println(r)
+		// Output:
+		// 1
+		// 1
+		// 2
+		// 3
+		// 5
 	}
 }

@@ -1,6 +1,6 @@
 package fib
 
-// Generate ...
+// generate Fibonacci and return them as slice
 func GenerateSlice(count uint) []uint {
 	var prev, current uint = 0, 1
 	var i uint
@@ -15,7 +15,7 @@ func GenerateSlice(count uint) []uint {
 	return fibs
 }
 
-// return a receive-only channel only
+// generate Fibonacci and return a receive-only channel to get them
 func GenerateChannel(count uint, buffersize uint) <-chan (uint) {
 
 	// create a two-way buffered channel
